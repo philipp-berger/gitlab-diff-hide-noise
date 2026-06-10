@@ -10,6 +10,13 @@ Upload package: `mrViewReducer-<version>.zip` (run `./build.sh`).
 | `screenshot-1-before-after.png` | 1280×800 | Screenshot 1 |
 | `screenshot-2-categories.png` | 1280×800 | Screenshot 2 |
 | `promo-440x280.png` | 440×280 | Small promo tile (optional) |
+| `marquee-1400x560.png` | 1400×560 | Marquee promo tile (optional) |
+
+## URLs (hosted on GitHub Pages)
+
+- Homepage: https://philipp-berger.github.io/gitlab-diff-hide-noise/
+- Privacy policy: https://philipp-berger.github.io/gitlab-diff-hide-noise/privacy.html
+- Support: https://github.com/philipp-berger/gitlab-diff-hide-noise/issues
 
 (Screenshots are illustrative mockups with generic file names.)
 

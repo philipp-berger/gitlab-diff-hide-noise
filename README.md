@@ -1,5 +1,9 @@
 # GitLab Diff: Hide Renames, Shims &amp; Noise
 
+**[Website](https://philipp-berger.github.io/gitlab-diff-hide-noise/)** ·
+**[Privacy](https://philipp-berger.github.io/gitlab-diff-hide-noise/privacy.html)** ·
+Chrome Web Store: _pending review_
+
 A Chrome (MV3) extension that declutters GitLab merge-request **diff** pages by
 hiding four kinds of low-signal files:
 
