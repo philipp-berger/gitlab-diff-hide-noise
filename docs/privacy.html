@@ -17,32 +17,46 @@
       ul { margin: 6px 0 0 20px; }
       code { background: #2a2a44; padding: 1px 6px; border-radius: 5px; font-size: 13px; }
       .back { display: inline-block; margin-bottom: 22px; color: var(--accent); text-decoration: none; }
+      .tldr { margin-top: 16px; padding: 14px 16px; background: #1f1f33; border: 1px solid var(--line); border-radius: 10px; }
     </style>
   </head>
   <body>
     <div class="wrap">
       <a class="back" href="index.html">← Back</a>
       <h1>Privacy Policy</h1>
-      <div class="sub">GitLab Diff: Hide Renames, Shims &amp; Noise · last updated 2026-06-10</div>
+      <div class="sub">GitLab Diff: Hide Renames, Shims &amp; Noise · effective 2026-06-10</div>
 
-      <p style="margin-top:18px">This extension does not collect, transmit, store, or sell any personal data.</p>
+      <div class="tldr">
+        <strong>In short:</strong> this extension collects no personal data, sends nothing to
+        the author or any third party, and processes everything locally in your browser.
+      </div>
 
-      <h2>What it accesses</h2>
+      <h2>Data controller</h2>
+      <p>The extension is provided by <strong>Philipp Berger</strong> ("the author").
+        Because no personal data is processed by the author, no representative or data
+        protection officer is appointed. Privacy questions can be raised via the
+        <a href="https://github.com/philipp-berger/gitlab-diff-hide-noise/issues">project issue tracker</a>.</p>
+
+      <h2>What the extension does with data</h2>
       <ul>
         <li>It runs only on <code>https://gitlab.com/*/-/merge_requests/*</code> pages.</li>
         <li>It reads the current merge request's diff data from GitLab's own API
           (<code>/api/v4/…</code> and <code>diffs_metadata.json</code>) using your existing
-          GitLab session, <strong>same-origin only</strong>. No credentials are read, stored, or sent anywhere.</li>
-        <li>It stores your toggle preferences (which categories to hide) in
-          <code>chrome.storage.sync</code> and mirrors them to the page's
-          <code>localStorage</code> so the in-page script can read them. These are simple
-          booleans, never leave your browser, and contain no personal information.</li>
+          GitLab session, <strong>same-origin only</strong>, to decide which files to hide.
+          This happens entirely in your browser. No credentials are read, and this data is
+          never stored or transmitted anywhere by the extension.</li>
+        <li>It stores your toggle preferences (which categories to hide). These are simple
+          on/off booleans containing no personal information. They are kept in
+          <code>chrome.storage.sync</code> — which Chrome may synchronise to your own Google
+          Account across your signed-in devices — and mirrored to the page's
+          <code>localStorage</code> so the in-page script can read them. They are never sent
+          to the author or any third party.</li>
       </ul>
 
-      <h2>What it does NOT do</h2>
+      <h2>What the extension does NOT do</h2>
       <ul>
-        <li>No data is sent to the extension author or any third party.</li>
-        <li>No analytics, tracking, or telemetry.</li>
+        <li>No personal data is collected, transmitted, sold, or shared.</li>
+        <li>No analytics, tracking, telemetry, cookies, or fingerprinting.</li>
         <li>No remote code is loaded or executed.</li>
         <li>No access to any site other than <code>gitlab.com</code> merge request pages.</li>
       </ul>
@@ -50,13 +64,39 @@
       <h2>Permissions</h2>
       <ul>
         <li><code>storage</code> — to remember your toggle preferences.</li>
-        <li><code>host_permissions: https://gitlab.com/*</code> — to read the MR diff data and
-          adjust the diff page in place.</li>
+        <li><code>host_permissions: https://gitlab.com/*</code> — to read the merge request's
+          own diff data and adjust the diff page in place.</li>
       </ul>
+
+      <h2>Your rights under the GDPR</h2>
+      <p>The author does not collect or hold any personal data about you, so in practice there
+        is no personal data to access, rectify, erase, restrict, port, or object to. Should you
+        believe any personal data is nonetheless being processed, you may contact the author via
+        the <a href="https://github.com/philipp-berger/gitlab-diff-hide-noise/issues">issue tracker</a>
+        to exercise your rights under Articles 15–21 GDPR. You also have the right to lodge a
+        complaint with a data protection supervisory authority in your country of residence.</p>
+
+      <h2>Third-party services</h2>
+      <p>The extension itself sends no data to third parties. Two independent services, governed
+        by their own privacy policies, are involved only indirectly:</p>
+      <ul>
+        <li><strong>Google Chrome</strong> — distributes the extension and, if you are signed in,
+          may synchronise the non-personal preference booleans via Chrome Sync.</li>
+        <li><strong>GitHub Pages</strong> — hosts this website and may log standard request data
+          (such as IP address) when you visit it, per GitHub's privacy policy. Visiting this page
+          is not required to use the extension.</li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>The extension is a developer tool, not directed at children, and processes no personal
+        data from anyone.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>Any changes will be published on this page with an updated effective date.</p>
 
       <h2>Contact</h2>
       <p>Questions: open an issue on the
-        <a href="https://github.com/philipp-berger/gitlab-diff-hide-noise">project repository</a>.</p>
+        <a href="https://github.com/philipp-berger/gitlab-diff-hide-noise/issues">project repository</a>.</p>
     </div>
   </body>
 </html>
