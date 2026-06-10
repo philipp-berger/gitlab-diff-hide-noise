@@ -41,6 +41,32 @@ appointed. Privacy questions: the
 - `host_permissions: https://gitlab.com/*` — read the MR's own diff data and
   adjust the diff page in place.
 
+## Legal basis (Art. 6 GDPR)
+
+The author does not process personal data, so no Article 6 legal basis arises
+for the author. Your preferences are stored solely to make the extension work as
+you configured it — local browser configuration under your control, not
+processing of personal data by the author.
+
+## Storage and retention
+
+The author stores and retains no personal data and keeps no logs. Your
+preference settings (non-personal booleans) remain in your browser — and, if
+Chrome Sync is enabled, in your own Google Account — until you change them, clear
+your browser storage, or uninstall the extension.
+
+## International data transfers
+
+The extension transfers no personal data and performs no international transfer.
+If you separately use Chrome Sync or visit the website, Google or GitHub may
+process technical data on servers outside the EU/EEA under their own safeguards
+(e.g. EU Standard Contractual Clauses), per their respective privacy policies.
+
+## Automated decision-making
+
+No automated decision-making or profiling within the meaning of Article 22 GDPR
+takes place.
+
 ## Your rights under the GDPR
 
 The author collects and holds no personal data, so there is in practice no
