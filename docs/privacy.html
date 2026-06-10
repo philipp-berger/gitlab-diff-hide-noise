@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — GitLab Diff: Hide Renames, Shims &amp; Noise</title>
+    <style>
+      :root { --bg:#14141f; --line:#33334e; --text:#e8e8f2; --muted:#a6a6c2; --accent:#9fa8ff; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background: var(--bg); color: var(--text); font: 16px/1.65 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+      a { color: var(--accent); }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+      h1 { font-size: 30px; font-weight: 800; }
+      .sub { color: var(--muted); margin-top: 6px; }
+      h2 { font-size: 19px; font-weight: 700; margin: 30px 0 8px; }
+      p, li { color: #d5d5e6; }
+      ul { margin: 6px 0 0 20px; }
+      code { background: #2a2a44; padding: 1px 6px; border-radius: 5px; font-size: 13px; }
+      .back { display: inline-block; margin-bottom: 22px; color: var(--accent); text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="back" href="index.html">← Back</a>
+      <h1>Privacy Policy</h1>
+      <div class="sub">GitLab Diff: Hide Renames, Shims &amp; Noise · last updated 2026-06-10</div>
+
+      <p style="margin-top:18px">This extension does not collect, transmit, store, or sell any personal data.</p>
+
+      <h2>What it accesses</h2>
+      <ul>
+        <li>It runs only on <code>https://gitlab.com/*/-/merge_requests/*</code> pages.</li>
+        <li>It reads the current merge request's diff data from GitLab's own API
+          (<code>/api/v4/…</code> and <code>diffs_metadata.json</code>) using your existing
+          GitLab session, <strong>same-origin only</strong>. No credentials are read, stored, or sent anywhere.</li>
+        <li>It stores your toggle preferences (which categories to hide) in
+          <code>chrome.storage.sync</code> and mirrors them to the page's
+          <code>localStorage</code> so the in-page script can read them. These are simple
+          booleans, never leave your browser, and contain no personal information.</li>
+      </ul>
+
+      <h2>What it does NOT do</h2>
+      <ul>
+        <li>No data is sent to the extension author or any third party.</li>
+        <li>No analytics, tracking, or telemetry.</li>
+        <li>No remote code is loaded or executed.</li>
+        <li>No access to any site other than <code>gitlab.com</code> merge request pages.</li>
+      </ul>
+
+      <h2>Permissions</h2>
+      <ul>
+        <li><code>storage</code> — to remember your toggle preferences.</li>
+        <li><code>host_permissions: https://gitlab.com/*</code> — to read the MR diff data and
+          adjust the diff page in place.</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>Questions: open an issue on the
+        <a href="https://github.com/philipp-berger/gitlab-diff-hide-noise">project repository</a>.</p>
+    </div>
+  </body>
+</html>
