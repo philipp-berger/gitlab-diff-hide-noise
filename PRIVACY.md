@@ -11,7 +11,7 @@ Hosted version: https://philipp-berger.github.io/gitlab-diff-hide-noise/privacy.
 
 Provided by **Philipp Berger** ("the author"). Because no personal data is
 processed by the author, no representative or data protection officer is
-appointed. Privacy questions: the
+appointed. Privacy questions: email <p.stylus+gitlab-diff-hide-noise@gmail.com> or the
 [issue tracker](https://github.com/philipp-berger/gitlab-diff-hide-noise/issues).
 
 ## What the extension does with data
