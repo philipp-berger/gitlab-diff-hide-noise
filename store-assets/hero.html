@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { background: #14141f; }
+      body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+      .frame {
+        width: 1280px; height: 800px; position: relative; overflow: hidden;
+        background: radial-gradient(1200px 600px at 20% -10%, #2c2c47 0%, #14141f 60%);
+        color: #e8e8f2;
+      }
+      .head { padding: 56px 64px 0; }
+      .head h1 { font-size: 44px; font-weight: 800; letter-spacing: -0.02em; }
+      .head h1 .hl { color: #9fa8ff; }
+      .head p { margin-top: 14px; font-size: 19px; color: #b9b9d4; }
+      .chips { margin-top: 22px; display: flex; gap: 10px; }
+      .chip { font-size: 13px; font-weight: 600; padding: 7px 13px; border-radius: 999px;
+        background: #2a2a44; color: #c8ccff; border: 1px solid #3a3a5c; }
+
+      .stage { position: absolute; left: 64px; right: 64px; bottom: 0; top: 300px; display: flex; gap: 26px; }
+      .panel { background: #1b1b2b; border: 1px solid #30304c; border-radius: 14px 14px 0 0;
+        box-shadow: 0 24px 60px rgba(0,0,0,.45); overflow: hidden; flex: 1; }
+      .panel .bar { display:flex; align-items:center; justify-content:space-between;
+        padding: 12px 16px; border-bottom: 1px solid #2a2a42; font-size: 13px; color: #aab; }
+      .panel .bar .count { font-weight: 700; }
+      .panel.before .bar .count { color: #ff8a8a; }
+      .panel.after .bar .count { color: #8affc0; }
+      .rows { padding: 8px 10px; }
+      .row { display: flex; align-items: center; gap: 9px; padding: 5px 8px; border-radius: 6px; }
+      .row .ic { width: 13px; height: 16px; border-radius: 2px; background: #3b6; opacity:.85; }
+      .row .ic.ts { background: #4a78d6; }
+      .row .name { font-size: 13px; }
+      .row .delta { margin-left: auto; font-size: 12px; color: #6d6d8c; }
+      .row.noise { opacity: .5; }
+      .row.noise .delta { color: #6d6d8c; }
+      .indent { margin-left: 18px; }
+      .folder { color: #aab; font-size: 13px; padding: 5px 8px; }
+      .strike { position: relative; }
+
+      .popup { position: absolute; right: 96px; top: 232px; width: 290px; z-index: 5;
+        background: #20203a; border: 1px solid #3a3a5c; border-radius: 14px;
+        box-shadow: 0 26px 70px rgba(0,0,0,.55); overflow: hidden; }
+      .popup .ph { display:flex; align-items:center; gap:10px; padding:13px 15px; border-bottom:1px solid #34344f; }
+      .popup .ph .logo { width:26px;height:26px;border-radius:7px; }
+      .popup .ph .t { font-size:13px;font-weight:700; }
+      .popup .ph .s { font-size:11px;color:#9a9ab5; }
+      .popup .pr { display:flex; align-items:center; justify-content:space-between; padding:9px 15px; }
+      .popup .pr .l { font-size:12.5px; font-weight:500; }
+      .popup .pr .d { font-size:10.5px; color:#9a9ab5; }
+      .sw { width:32px;height:19px;border-radius:999px;background:#9fa8ff; position:relative; flex:0 0 auto; }
+      .sw::after { content:''; position:absolute; top:2px; right:2px; width:15px;height:15px;border-radius:50%;background:#fff; }
+      .seclbl { font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:#9a9ab5; padding: 6px 15px 0; }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="head">
+        <h1>Cut the noise from <span class="hl">GitLab</span> diff reviews</h1>
+        <p>Hide rename, re-export-shim, import-only &amp; comment-only files — straight from the file tree.</p>
+        <div class="chips">
+          <span class="chip">Renames</span>
+          <span class="chip">Re-export shims</span>
+          <span class="chip">Import-only</span>
+          <span class="chip">Comment-only</span>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="panel before">
+          <div class="bar"><span>Changes</span><span class="count">288 files</span></div>
+          <div class="rows">
+            <div class="folder">📁 src/services</div>
+            <div class="row noise indent"><span class="ic ts"></span><span class="name">apiClient.ts</span><span class="delta">+0 −0</span></div>
+            <div class="row noise indent"><span class="ic ts"></span><span class="name">errors.ts</span><span class="delta">+0 −0</span></div>
+            <div class="row indent"><span class="ic ts"></span><span class="name">migration.ts</span><span class="delta">+193 −0</span></div>
+            <div class="row noise indent"><span class="ic ts"></span><span class="name">order.ts</span><span class="delta">+0 −0</span></div>
+            <div class="row noise indent"><span class="ic ts"></span><span class="name">templates.ts</span><span class="delta">+0 −0</span></div>
+            <div class="row noise indent"><span class="ic ts"></span><span class="name">settings.ts</span><span class="delta">+1 −1</span></div>
+            <div class="row indent"><span class="ic ts"></span><span class="name">index.ts</span><span class="delta">+12 −17</span></div>
+            <div class="row noise indent"><span class="ic ts"></span><span class="name">status.ts</span><span class="delta">+0 −0</span></div>
+          </div>
+        </div>
+
+        <div class="panel after">
+          <div class="bar"><span>Changes — noise hidden</span><span class="count">92 files</span></div>
+          <div class="rows">
+            <div class="folder">📁 src/services</div>
+            <div class="row indent"><span class="ic ts"></span><span class="name">migration.ts</span><span class="delta">+193 −0</span></div>
+            <div class="row indent"><span class="ic ts"></span><span class="name">index.ts</span><span class="delta">+12 −17</span></div>
+            <div class="row indent"><span class="ic ts"></span><span class="name">record.ts</span><span class="delta">+24 −6</span></div>
+            <div class="row indent"><span class="ic"></span><span class="name">service.test.ts</span><span class="delta">+58 −3</span></div>
+            <div class="row indent"><span class="ic ts"></span><span class="name">report.ts</span><span class="delta">+9 −9</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup">
+        <div class="ph"><img class="logo" src="../icons/icon-48.png"/><div><div class="t">Hide Renames &amp; Noise</div><div class="s">GitLab merge request diffs</div></div></div>
+        <div class="pr"><div class="l">Enabled</div><div class="sw"></div></div>
+        <div class="seclbl">Hide files that only contain</div>
+        <div class="pr"><div><div class="l">Pure renames</div><div class="d">Moved files, no content change</div></div><div class="sw"></div></div>
+        <div class="pr"><div><div class="l">Re-export shims</div><div class="d">Bodies that are only export … from</div></div><div class="sw"></div></div>
+        <div class="pr"><div><div class="l">Import-only changes</div><div class="d">Only import … from lines changed</div></div><div class="sw"></div></div>
+        <div class="pr"><div><div class="l">Comment-only changes</div><div class="d">Only comment lines changed</div></div><div class="sw"></div></div>
+      </div>
+    </div>
+  </body>
+</html>

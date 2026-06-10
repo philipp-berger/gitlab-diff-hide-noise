@@ -3,59 +3,218 @@
   <head>
     <meta charset="utf-8" />
     <style>
+      :root {
+        --bg: #1c1c2b;
+        --panel: #24243a;
+        --text: #e8e8f2;
+        --muted: #9a9ab5;
+        --line: #34344f;
+        --accent: #9fa8ff;
+        --accent-ink: #1c1c2b;
+        --danger: #ff6b6b;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #ffffff;
+          --panel: #f6f6fb;
+          --text: #23233a;
+          --muted: #6b6b85;
+          --line: #e4e4ef;
+          --accent: #5b62e0;
+          --accent-ink: #ffffff;
+          --danger: #e0484b;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
       body {
-        width: 240px;
+        width: 288px;
         margin: 0;
-        padding: 12px 14px;
-        font: 13px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        color: #333;
+        padding: 0;
+        font: 13px/1.45 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--text);
+        background: var(--bg);
       }
-      h1 {
-        font-size: 13px;
-        margin: 0 0 10px;
-      }
-      label {
+      header {
         display: flex;
         align-items: center;
-        gap: 8px;
-        padding: 5px 0;
+        gap: 10px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+      header img {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+      }
+      header .title {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      header .sub {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .section {
+        padding: 8px 16px 4px;
+      }
+      .section-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        margin: 8px 0 4px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 8px 0;
         cursor: pointer;
+        border-bottom: 1px solid transparent;
+      }
+      .row .label {
+        font-weight: 500;
+      }
+      .row .desc {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 1px;
+      }
+      .row.master {
+        padding: 10px 0;
+      }
+      .row.master .label {
+        font-weight: 600;
+      }
+      /* toggle switch */
+      .switch {
+        position: relative;
+        flex: 0 0 auto;
+        width: 34px;
+        height: 20px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
+      }
+      .switch .track {
+        position: absolute;
+        inset: 0;
+        background: var(--line);
+        border-radius: 999px;
+        transition: background 0.15s ease;
+      }
+      .switch .track::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 0.15s ease;
+      }
+      .switch input:checked + .track {
+        background: var(--accent);
+      }
+      .switch input:checked + .track::after {
+        transform: translateX(14px);
+      }
+      .categories.disabled {
+        opacity: 0.45;
+        pointer-events: none;
+      }
+      .footer {
+        padding: 10px 16px 14px;
+        border-top: 1px solid var(--line);
       }
       button#rescan {
-        margin-top: 10px;
         width: 100%;
-        padding: 6px 8px;
+        padding: 8px 10px;
         font: inherit;
+        font-weight: 600;
         cursor: pointer;
-        border: 1px solid #c9c9c9;
-        border-radius: 6px;
-        background: #f5f5f5;
+        color: var(--accent-ink);
+        background: var(--accent);
+        border: 0;
+        border-radius: 8px;
+        transition: filter 0.12s ease;
       }
       button#rescan:hover {
-        background: #ebebeb;
+        filter: brightness(1.08);
       }
       button#rescan:active {
-        background: #e0e0e0;
+        filter: brightness(0.94);
       }
       .hint {
-        margin-top: 10px;
-        color: #888;
+        margin-top: 8px;
+        color: var(--muted);
         font-size: 11px;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <h1>Hide Renames &amp; Shims</h1>
-    <label><input type="checkbox" id="enabled" /> Enabled</label>
-    <label><input type="checkbox" id="hideRenames" /> Hide pure renames</label>
-    <label><input type="checkbox" id="hideShims" /> Hide re-export shims</label>
-    <label><input type="checkbox" id="hideImports" /> Hide import-only changes</label>
-    <label><input type="checkbox" id="hideComments" /> Hide comment-only changes</label>
-    <button id="rescan" type="button">Reload page</button>
-    <div class="hint">
-      Classic diff pages only — Rapid Diffs is not supported. Changing a category
-      re-filters the file tree on the next page reload.
+    <header>
+      <img src="icons/icon-48.png" alt="" />
+      <div>
+        <div class="title">Hide Renames &amp; Noise</div>
+        <div class="sub">GitLab merge request diffs</div>
+      </div>
+    </header>
+
+    <div class="section">
+      <label class="row master">
+        <div><span class="label">Enabled</span></div>
+        <span class="switch"><input type="checkbox" id="enabled" /><span class="track"></span></span>
+      </label>
     </div>
+
+    <div class="section">
+      <div class="section-label">Hide files that only contain</div>
+      <div class="categories" id="categories">
+        <label class="row">
+          <div>
+            <div class="label">Pure renames</div>
+            <div class="desc">Moved files, no content change</div>
+          </div>
+          <span class="switch"><input type="checkbox" id="hideRenames" /><span class="track"></span></span>
+        </label>
+        <label class="row">
+          <div>
+            <div class="label">Re-export shims</div>
+            <div class="desc">Bodies that are only <code>export … from</code></div>
+          </div>
+          <span class="switch"><input type="checkbox" id="hideShims" /><span class="track"></span></span>
+        </label>
+        <label class="row">
+          <div>
+            <div class="label">Import-only changes</div>
+            <div class="desc">Only <code>import … from</code> lines changed</div>
+          </div>
+          <span class="switch"><input type="checkbox" id="hideImports" /><span class="track"></span></span>
+        </label>
+        <label class="row">
+          <div>
+            <div class="label">Comment-only changes</div>
+            <div class="desc">Only comment lines changed</div>
+          </div>
+          <span class="switch"><input type="checkbox" id="hideComments" /><span class="track"></span></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="footer">
+      <button id="rescan" type="button">Reload page</button>
+      <div class="hint">Classic diffs only — Rapid Diffs unsupported</div>
+    </div>
+
     <script src="popup.js"></script>
   </body>
 </html>

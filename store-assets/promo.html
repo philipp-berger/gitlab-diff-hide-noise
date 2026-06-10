@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { background: #14141f; }
+      .frame {
+        width: 440px; height: 280px; overflow: hidden;
+        background: radial-gradient(600px 360px at 80% 120%, #2f2f4d 0%, #16161f 65%);
+        color: #e8e8f2; font: 14px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        display: flex; flex-direction: column; justify-content: center; padding: 0 34px;
+      }
+      .top { display: flex; align-items: center; gap: 14px; }
+      .top img { width: 52px; height: 52px; border-radius: 12px; }
+      .top .n { font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+      h2 { margin-top: 22px; font-size: 25px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+      h2 .hl { color: #9fa8ff; }
+      .chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 7px; }
+      .chip { font-size: 11.5px; font-weight: 600; padding: 5px 10px; border-radius: 999px;
+        background: #2a2a44; color: #c8ccff; border: 1px solid #3a3a5c; }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <div class="top"><img src="../icons/icon-128.png"/><div class="n">Hide Renames &amp; Noise</div></div>
+      <h2>Cut the noise from <span class="hl">GitLab</span> diff reviews</h2>
+      <div class="chips">
+        <span class="chip">Renames</span>
+        <span class="chip">Re-export shims</span>
+        <span class="chip">Import-only</span>
+        <span class="chip">Comment-only</span>
+      </div>
+    </div>
+  </body>
+</html>
