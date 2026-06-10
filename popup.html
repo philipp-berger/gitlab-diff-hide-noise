@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 240px;
+        margin: 0;
+        padding: 12px 14px;
+        font: 13px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #333;
+      }
+      h1 {
+        font-size: 13px;
+        margin: 0 0 10px;
+      }
+      label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 0;
+        cursor: pointer;
+      }
+      button#rescan {
+        margin-top: 10px;
+        width: 100%;
+        padding: 6px 8px;
+        font: inherit;
+        cursor: pointer;
+        border: 1px solid #c9c9c9;
+        border-radius: 6px;
+        background: #f5f5f5;
+      }
+      button#rescan:hover {
+        background: #ebebeb;
+      }
+      button#rescan:active {
+        background: #e0e0e0;
+      }
+      .hint {
+        margin-top: 10px;
+        color: #888;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hide Renames &amp; Shims</h1>
+    <label><input type="checkbox" id="enabled" /> Enabled</label>
+    <label><input type="checkbox" id="hideRenames" /> Hide pure renames</label>
+    <label><input type="checkbox" id="hideShims" /> Hide re-export shims</label>
+    <label><input type="checkbox" id="hideImports" /> Hide import-only changes</label>
+    <label><input type="checkbox" id="hideComments" /> Hide comment-only changes</label>
+    <button id="rescan" type="button">Reload page</button>
+    <div class="hint">
+      Classic diff pages only — Rapid Diffs is not supported. Changing a category
+      re-filters the file tree on the next page reload.
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
